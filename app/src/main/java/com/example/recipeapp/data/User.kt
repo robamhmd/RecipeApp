@@ -16,5 +16,5 @@ data class User(
     val firstName: String,
 
     @ColumnInfo(name = "password_hash")
-    val passwordHash: String
+    val passwordHash: String,
 )
