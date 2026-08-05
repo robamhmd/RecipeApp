@@ -7,8 +7,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
-import com.example.recipeapp.data.AppDatabase
-import com.example.recipeapp.data.User
+import com.example.recipeapp.model.AppDatabase
+import com.example.recipeapp.model.User
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
