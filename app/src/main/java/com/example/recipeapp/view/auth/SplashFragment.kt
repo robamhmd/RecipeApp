@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.recipeapp.R
+import android.os.Handler
+import android.os.Looper
 
 class SplashFragment : Fragment() {
 
