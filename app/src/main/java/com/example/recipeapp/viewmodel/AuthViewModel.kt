@@ -16,10 +16,24 @@ class AuthViewModel(
         }
     }
 
+
     suspend fun login(username: String): User? {
         return repository.getUser(username)
     }
+
+
     suspend fun userExists(username: String): Boolean {
         return repository.userExists(username)
+    }
+
+    suspend fun authenticate(username: String, password: String): User? {
+
+        val user = repository.getUser(username)
+
+        return if (user != null && user.passwordHash == password) {
+            user
+        } else {
+            null
+        }
     }
 }
