@@ -19,4 +19,7 @@ class AuthViewModel(
     suspend fun login(username: String): User? {
         return repository.getUser(username)
     }
+    suspend fun userExists(username: String): Boolean {
+        return repository.userExists(username)
+    }
 }

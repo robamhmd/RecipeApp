@@ -12,4 +12,8 @@ class UserRepository(private val userDao: UserDao) {
     suspend fun getUser(username: String): User? {
         return userDao.getUserByUsername(username)
     }
+
+    suspend fun userExists(username: String): Boolean {
+        return userDao.userExists(username) > 0
+    }
 }
