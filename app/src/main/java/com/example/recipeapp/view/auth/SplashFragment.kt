@@ -1,13 +1,14 @@
 package com.example.recipeapp.view.auth
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.recipeapp.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashFragment : Fragment() {
 
@@ -22,12 +23,14 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.authFragmentContainer, LoginFragment())
-                .commit()
-
-        }, 5000)
+        lifecycleScope.launch {
+            delay(2000)
+            if (isAdded) {
+                parentFragmentManager.beginTransaction()
+                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                    .replace(R.id.authFragmentContainer, LoginFragment())
+                    .commit()
+            }
+        }
     }
 }
