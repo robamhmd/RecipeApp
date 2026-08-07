@@ -28,11 +28,15 @@ class SharedPrefManager(context: Context) {
             .apply()
     }
 
-    fun getFirstName(): String? {
-        return sharedPreferences.getString(FIRST_NAME, "")
+
+    fun getFirstName(): String {
+        return sharedPreferences.getString(FIRST_NAME, "") ?: ""
     }
 
+
     fun logout() {
-        sharedPreferences.edit().clear().apply()
+        sharedPreferences.edit()
+            .clear()
+            .apply()
     }
 }
