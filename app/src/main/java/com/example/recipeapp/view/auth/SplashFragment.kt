@@ -9,6 +9,11 @@ import androidx.lifecycle.lifecycleScope
 import com.example.recipeapp.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import android.content.Intent
+import android.os.Handler
+import android.os.Looper
+import com.example.recipeapp.utils.SharedPrefManager
+import com.example.recipeapp.view.recipe.RecipeActivity
 
 class SplashFragment : Fragment() {
 
@@ -23,14 +28,24 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch {
-            delay(2000)
-            if (isAdded) {
+        Handler(Looper.getMainLooper()).postDelayed({
+
+            val sharedPrefManager = SharedPrefManager(requireContext())
+
+            if (sharedPrefManager.isLoggedIn()) {
+
+                val intent = Intent(requireContext(), RecipeActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+
+            } else {
+
                 parentFragmentManager.beginTransaction()
-                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
                     .replace(R.id.authFragmentContainer, LoginFragment())
                     .commit()
+
             }
-        }
+
+        }, 5000)
     }
 }
