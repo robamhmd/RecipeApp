@@ -36,4 +36,10 @@
             app:destination="@id/recipeDetailFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.recipeapp.view.main.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+
 </navigation>
