@@ -1,9 +1,7 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.RecipeApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Theme.RecipeApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">#F8F9FA</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
-
-    <style name="Theme.RecipeApp" parent="Base.Theme.RecipeApp" />
 </resources>

@@ -1,33 +1,31 @@
-package com.example.recipeapp.view.recipe
+package com.example.recipeapp.view.auth.recipe
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import com.example.recipeapp.R
-import com.example.recipeapp.utils.SharedPrefManager
-import com.example.recipeapp.view.auth.AuthActivity
+import com.example.recipeapp.databinding.ActivityRecipeBinding
 
 class RecipeActivity : AppCompatActivity() {
 
-    private lateinit var sharedPrefManager: SharedPrefManager
+    private lateinit var binding: ActivityRecipeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recipe)
+        binding = ActivityRecipeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        sharedPrefManager = SharedPrefManager(this)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        val btnLogout = findViewById<Button>(R.id.btnLogout)
-
-        btnLogout.setOnClickListener {
-
-            sharedPrefManager.logout()
-
-            val intent = Intent(this, AuthActivity::class.java)
-            startActivity(intent)
-
-            finish()
-        }
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (!navController.popBackStack()) {
+                    finishAffinity()
+                }
+            }
+        })
     }
 }
