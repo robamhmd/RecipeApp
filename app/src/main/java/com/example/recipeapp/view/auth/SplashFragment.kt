@@ -13,7 +13,7 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import com.example.recipeapp.utils.SharedPrefManager
-import com.example.recipeapp.view.recipe.RecipeActivity
+import com.example.recipeapp.view.auth.recipe.RecipeActivity
 
 class SplashFragment : Fragment() {
 

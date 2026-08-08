@@ -14,7 +14,7 @@ import com.example.recipeapp.databinding.FragmentLoginBinding
 import com.example.recipeapp.model.AppDatabase
 import com.example.recipeapp.model.repository.UserRepository
 import com.example.recipeapp.utils.SharedPrefManager
-import com.example.recipeapp.view.recipe.RecipeActivity
+import com.example.recipeapp.view.auth.recipe.RecipeActivity
 import com.example.recipeapp.viewmodel.AuthViewModel
 import com.example.recipeapp.viewmodel.AuthViewModelFactory
 import kotlinx.coroutines.launch
